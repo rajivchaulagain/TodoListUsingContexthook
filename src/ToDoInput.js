@@ -1,13 +1,15 @@
 import React from 'react';
 import { useTodo } from './TodoContext';
+import { TodoButton } from './TodoButton';
 
 export const ToDoInput = () => {
-  const { input, handleInput, onSubmit } = useTodo();
+  const { todos, input, handleInput, resetAll } = useTodo();
   return (
     <>
       <input value={input} onChange={(e) => handleInput(e)} />
-      <button onClick={(e) => onSubmit(e)} disabled={input.length === 0}>
-        Add
+      <TodoButton />
+      <button onClick={resetAll} disabled={todos.length === 0}>
+        reset All
       </button>
     </>
   );
